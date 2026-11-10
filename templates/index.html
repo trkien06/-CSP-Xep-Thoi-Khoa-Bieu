@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xếp thời khóa biểu bằng CSP - Trí tuệ nhân tạo (IT6094)</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="dau-trang">
+  <div class="khung">
+    <h1>XẾP THỜI KHÓA BIỂU BẰNG BÀI TOÁN THỎA MÃN RÀNG BUỘC (CSP)</h1>
+    <p>Mỗi buổi học là một biến · Miền giá trị là các cặp (khung giờ, phòng) · Ràng buộc: không trùng giảng viên, không trùng phòng, phòng đủ chỗ, giảng viên không bận · Ràng buộc mềm: ưu tiên buổi sáng</p>
+  </div>
+</header>
+
+<main class="khung">
+  <section class="the dieu-khien">
+    <div class="nhom">
+      <label class="tieu-de-nhom" for="chon-bo">Bộ dữ liệu</label>
+      <select id="chon-bo"></select>
+      <span id="ten-bo" class="mo-ta"></span>
+    </div>
+    <div class="nhom">
+      <span class="tieu-de-nhom">Thuật toán</span>
+      <div id="chon-thuat-toan" class="lua-chon"></div>
+    </div>
+    <div class="hang-nut">
+      <button id="nut-xep-lich" class="nut nut-chinh">▶ Xếp lịch</button>
+      <button id="nut-so-sanh" class="nut">So sánh 3 thuật toán</button>
+      <button id="nut-du-lieu" class="nut">Xem dữ liệu đầu vào</button>
+    </div>
+    <p id="trang-thai" class="trang-thai">Chưa xếp lịch. Chọn bộ dữ liệu và thuật toán rồi bấm Xếp lịch.</p>
+  </section>
+
+  <section id="muc-thong-ke" class="the an">
+    <h2>Kết quả xếp lịch</h2>
+    <div id="cac-o-thong-ke" class="luoi-thong-ke"></div>
+    <div id="ket-luan-kiem-tra"></div>
+  </section>
+
+  <section id="muc-luoi" class="the an">
+    <h2>Thời khóa biểu</h2>
+    <div class="bang-cuon">
+      <table id="bang-lich" class="bang-lich"></table>
+    </div>
+    <p id="ghi-chu-mo-hinh" class="mo-ta"></p>
+  </section>
+
+  <section id="muc-so-sanh" class="the an">
+    <h2 id="tieu-de-so-sanh">So sánh 3 thuật toán</h2>
+    <div class="bang-cuon">
+      <table class="bang-so-sanh">
+        <thead>
+          <tr>
+            <th>Thuật toán</th>
+            <th>Kết quả</th>
+            <th>Đã xếp</th>
+            <th>Điểm mềm (sáng)</th>
+            <th>Nút duyệt</th>
+            <th>Quay lui</th>
+            <th>Thời gian</th>
+            <th>Kiểm tra độc lập</th>
+          </tr>
+        </thead>
+        <tbody id="than-so-sanh"></tbody>
+      </table>
+    </div>
+    <p class="mo-ta">Nhận xét: Backtracking thuần và MRV + Forward Checking cùng cho lịch hợp lệ; MRV + Forward Checking cắt tỉa không gian tìm kiếm sớm nên ổn định hơn khi dữ liệu lớn. CP-SAT không chỉ tìm lịch hợp lệ mà còn tối ưu điểm mềm nên điểm thường cao nhất.</p>
+  </section>
+
+  <section id="muc-du-lieu" class="the an">
+    <h2 id="tieu-de-du-lieu">Dữ liệu đầu vào</h2>
+    <p id="tom-tat-du-lieu" class="mo-ta"></p>
+    <h3>Phòng học</h3>
+    <div class="bang-cuon">
+      <table class="bang-du-lieu">
+        <thead><tr><th>Phòng</th><th>Sức chứa</th></tr></thead>
+        <tbody id="than-phong"></tbody>
+      </table>
+    </div>
+    <h3>Giảng viên và khung giờ bận</h3>
+    <div class="bang-cuon">
+      <table class="bang-du-lieu">
+        <thead><tr><th>Mã GV</th><th>Họ tên</th><th>Khung giờ bận</th></tr></thead>
+        <tbody id="than-giang-vien"></tbody>
+      </table>
+    </div>
+    <h3>Lớp học phần</h3>
+    <div class="bang-cuon">
+      <table class="bang-du-lieu">
+        <thead><tr><th>Mã lớp</th><th>Môn học</th><th>Sĩ số</th><th>Giảng viên</th></tr></thead>
+        <tbody id="than-lop"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="chan-trang">
+  <div class="khung">
+    <p>Demo bài tập lớn môn Trí tuệ nhân tạo (IT6094) - Đề tài: Lập lịch thời khóa biểu bằng bài toán thỏa mãn ràng buộc (CSP). Thuật toán quay lui có giới hạn an toàn 300.000 nút duyệt.</p>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
